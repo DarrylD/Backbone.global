@@ -70,4 +70,4 @@ Have fun!
 ## Acknowledgments
 
 - [Maurice](https://github.com/morficus/): Harassing me to create this plugin;
-- [Camel](www.youtube.com/watch?v=kWBhP0EQ1lA): Talking camels kick ass;
+- [Camel](http://www.youtube.com/watch?v=kWBhP0EQ1lA): Talking camels kick ass;
