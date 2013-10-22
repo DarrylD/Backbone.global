@@ -4,7 +4,7 @@ A simple way to listen to global triggers in Backbone.js applications.
 
 ## Usage
 
-Include Backbone.localStorage after having included Backbone.js:
+Include Backbone.global after having included Backbone.js:
 
 ```html
 <script type="text/javascript" src="underscore.js"></script>
@@ -32,7 +32,7 @@ var Camel = Backbone.View.extend({
 });
 ```
 
-Create a another view like with global events:
+Create another view with global events:
 
 ```javascript
 var SomeView = Backbone.View.extend({
