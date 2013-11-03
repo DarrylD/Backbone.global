@@ -6,6 +6,10 @@
  * https://github.com/DarrylD/Backbone.global
  */
 (function(){
+
+  //By default, Use the built-in Backbone global event bus
+  Backbone.View.prototype.globalEventBus = Backbone;
+
   var originalDelegateEvents = Backbone.View.prototype.delegateEvents; //cache the original prototype to chain after new logic
   Backbone.View.prototype.delegateEvents = function(events) {
       // incase events comes from this.events opposed to the arg
@@ -24,11 +28,11 @@
         if(isGlobal){
           console.log("Avaiable channel: "+channel)
           //do awesomeness here with mediator
-          Backbone.on( channel, this[method] );
+          this.globalEventBus.on( channel, this[method] );
         }
       };
 
-      // chain the original method, it will ignore the global events natrually 
+      // chain the original method, it will ignore the global events natrually
       originalDelegateEvents.call(this, events);
   };
 })()
