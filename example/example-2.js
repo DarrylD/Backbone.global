@@ -1,31 +1,34 @@
+var OfficeMemo = _.extend({}, Backbone.Events);
+
 var Camel = Backbone.View.extend({
-    askDay: function(args) { 
-        Backbone.trigger('askPerson/day', args);
+    askDay: function(args) {
+        OfficeMemo.trigger('askPerson/day', args);
     },
-    findsOutDay: function() { 
-        Backbone.trigger('humpday'); 
+    findsOutDay: function() {
+        OfficeMemo.trigger('humpday');
     },
     goOnline: function() {
         var socialNetworkStuff = {
             status: 'WOOT WOOT!!',
             name: 'Wilbur'
         };
-        Backbone.trigger('camel/online', socialNetworkStuff);
+        OfficeMemo.trigger('camel/online', socialNetworkStuff);
     }
 });
 
 var SomeView = Backbone.View.extend({
+    globalEventBus: OfficeMemo, //speify the custom global event bus
     events: {
         "global askPerson/day": "askDay",
         "global humpday"      : "humpday",
         "global camel/online" : "camelOnline"
     },
-    askDay: function() {
-        var person = arguments[0].toUpperCase();
+    askDay: function(personName) {
+        var person = personName.toUpperCase();
         console.log(person+'! '+person+'! '+person+'! '+person+' '+person+'! What day is it?');
     },
-    camelOnline: function() {
-        console.log(arguments[0])
+    camelOnline: function(eventData) {
+        console.log(eventData)
     },
     humpday: function() {
         console.log('HUMP DAY!! WOOT WOOT!!');
