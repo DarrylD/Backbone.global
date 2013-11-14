@@ -32,7 +32,7 @@ var Camel = Backbone.View.extend({
 });
 ```
 
-Typical view using initialized to set up subscribers (which will get pretty sloppy after a while) :
+Typical view using initialize to set up subscribers (which will get pretty sloppy after a while) :
 
 ```javascript
 var SomeView = Backbone.View.extend({
