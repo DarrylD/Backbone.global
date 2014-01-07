@@ -28,7 +28,7 @@
 
         if(isGlobal){
           //do awesomeness here with mediator
-          that.globalEventBus.on( channel, that[method] );
+          that.globalEventBus.on( channel, that[method], that );
         }
       });
 
