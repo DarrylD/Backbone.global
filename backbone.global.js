@@ -5,34 +5,35 @@
  *
  * https://github.com/DarrylD/Backbone.global
  */
-(function(){
 
-  //By default, Use the built-in Backbone global event bus
-  Backbone.View.prototype.globalEventBus = Backbone;
+(function(factory) {
+  if (typeof define === 'function' && define.amd) {
+    define(['backbone', 'underscore'], factory);
+  } else if (typeof exports === 'object') {
+    module.exports = factory(require('backbone'), require('underscore'));
+  } else {
+    factory(window.Backbone, window._);
+  }
+})(function(Backbone, _) {
 
-  var originalDelegateEvents = Backbone.View.prototype.delegateEvents; //cache the original prototype to chain after new logic
-  Backbone.View.prototype.delegateEvents = function(events) {
-      // incase events comes from this.events opposed to the arg
-      // _(this).result('events') grabs the propery when when its a function, involke and return
-      // in our case we are looking for this.events
-      if(!( events || ( events = _(this).result('events') ) ) )
-          return;
+  var ViewProto = Backbone.View.prototype;
 
-      var seperatedEvents = _.pairs(events), //turn obj into an array of key/values
-          that = this;
+  ViewProto.globalEventBus = Backbone;
 
-      _.each(seperatedEvents, function( event ){
-        var isGlobal = event[0].split(' ')[0] === 'global', //check for global event
-            channel = event[0].split(' ')[1], //example: "someStuff/todo"
-             method = event[1];
+  ViewProto.delegateEvents = _.wrap(ViewProto.delegateEvents, function(original, events) {
+    if (!(events || (events = _.result(this, 'events')))) {
+      return this;
+    }
 
-        if(isGlobal){
-          //do awesomeness here with mediator
-          that.globalEventBus.on( channel, that[method], that );
-        }
-      });
+    _.each(events, function(handler, event) {
+      var match = event.match(/^global\s(.*)/);
 
-      // chain the original method, it will ignore the global events natrually
-      originalDelegateEvents.call(this, events);
-  };
-})()
+      if (match) {
+        this.listenTo(this.globalEventBus, match[1], this[handler]);
+      }
+    }, this);
+
+    return original.call(this, events);
+  });
+
+});
