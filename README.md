@@ -120,7 +120,7 @@ Have fun!
 
 ## Changelog
 
-### 0.1.2 - February 11, 2013
+### 0.1.2 - February 11, 2014
 
 - Added: custom mediator support [morficus](https://github.com/morficus/)
 - Added: AMD support [fantactuka](https://github.com/fantactuka/)
