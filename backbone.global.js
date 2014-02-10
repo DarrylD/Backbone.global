@@ -1,7 +1,7 @@
 /**
  * Backbone Global Events
  * A simple way to listen to global triggers in Backbone.js applications.
- * Version 0.1.0
+ * Version 0.1.2
  *
  * https://github.com/DarrylD/Backbone.global
  */
@@ -29,7 +29,14 @@
       var match = event.match(/^global\s(.*)/);
 
       if (match) {
-        this.listenTo(this.globalEventBus, match[1], this[handler]);
+        var event = match[1],
+          handler = this[handler];
+
+        this.globalEventBus.on(event, handler, this);
+        this.on('close', function() {
+          this.globalEventBus.off(event, handler, this);
+        }, this);
+        
       }
     }, this);
 

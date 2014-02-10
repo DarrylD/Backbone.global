@@ -117,3 +117,15 @@ Have fun!
 
 - [Maurice](https://github.com/morficus/): Harassing me to create this plugin;
 - [Camel](http://www.youtube.com/watch?v=kWBhP0EQ1lA): Talking camels kick ass;
+
+## Changelog
+
+### 0.1.2 - February 11, 2013
+
+- Added: custom mediator support [morficus](https://github.com/morficus/)
+- Added: AMD support [fantactuka](https://github.com/fantactuka/)
+- Fixed: view context issue [cthorne66](https://github.com/cthorne66/)
+
+### 0.1.0 - prior to October 22, 2013
+
+- Backbone.global: A simple way to listen to global triggers in Backbone.js applications.
