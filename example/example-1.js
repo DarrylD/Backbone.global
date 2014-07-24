@@ -16,6 +16,7 @@ var Camel = Backbone.View.extend({
 
 var SomeView = Backbone.View.extend({
     events: {
+        "click": "askDay",
         "global askPerson/day": "askDay",
         "global humpday"      : "humpday",
         "global camel/online" : "camelOnline"

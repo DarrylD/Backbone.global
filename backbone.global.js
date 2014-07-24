@@ -21,6 +21,9 @@
   ViewProto.globalEventBus = Backbone;
 
   ViewProto.delegateEvents = _.wrap(ViewProto.delegateEvents, function(original, events) {
+
+    original.call(this, events);
+
     if (!(events || (events = _.result(this, 'events')))) {
       return this;
     }
@@ -29,18 +32,33 @@
       var match = event.match(/^global\s(.*)/);
 
       if (match) {
-        var event = match[1],
-          handler = this[handler];
+          this.listenTo(this.globalEventBus, match[1], this[handler]);
 
-        this.globalEventBus.on(event, handler, this);
-        this.on('close', function() {
-          this.globalEventBus.off(event, handler, this);
-        }, this);
-        
       }
     }, this);
 
+    return //original.call(this, events);
+  });
+
+
+  ViewProto.undelegateEvents = _.wrap(ViewProto.undelegateEvents, function(original, events) {
+
+    var events = _.keys(this.events)
+
+    _.each(events, function(event){
+
+    	if ( event.match(/global /) ){
+
+    		//kill off the global event
+    		this.globalEventBus.off( event )
+
+    	}
+
+    }, this)
+
     return original.call(this, events);
   });
+
+
 
 });
