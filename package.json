@@ -1,5 +1,5 @@
 {
-  "name": "Backbone.global",
+  "name": "backbone.global",
   "description": "A simple way to listen to global triggers in Backbone.js applications.",
   "url": "https://github.com/DarrylD/Backbone.global",
   "keywords": [
