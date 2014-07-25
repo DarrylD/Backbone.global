@@ -37,7 +37,7 @@
       }
     }, this);
 
-    return //original.call(this, events);
+    return this //original.call(this, events);
   });
 
 
