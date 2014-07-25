@@ -1,0 +1,27 @@
+{
+  "name": "Backbone.global",
+  "description": "A simple way to listen to global triggers in Backbone.js applications.",
+  "url": "https://github.com/DarrylD/Backbone.global",
+  "keywords": [
+    "backbone",
+    "events"
+  ],
+  "author": {
+    "name": "DarryID",
+    "email": "idk@example.com"
+  },
+  "dependencies": {
+    "backbone": "*"
+  },
+  "main": "backbone.global.js",
+  "version": "0.1.2",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jashkenas/backbone.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DarrylD/Backbone.global/issues"
+  },
+  "homepage": "https://github.com/DarrylD/Backbone.global",
+}
