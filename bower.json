@@ -1,0 +1,29 @@
+{
+  "name": "Backbone.global",
+  "main": "backbone.global.js",
+  "version": "0.1.2",
+  "homepage": "https://github.com/DarrylD/Backbone.global",
+  "description": "A simple way to listen to global triggers in Backbone.js applications.",
+  "moduleType": [
+    "amd"
+  ],
+  "keywords": [
+    "backbone",
+    "backbone",
+    "global",
+    "backbone",
+    "events",
+    "events"
+  ],
+  "authors": [
+    "Darryl D."
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
